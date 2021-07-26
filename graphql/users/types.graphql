@@ -1,0 +1,11 @@
+type Query {
+    login(email: String!, password: String!): Authenticate!
+}
+
+type Mutation {
+    register(email: String!, password: String!): Authenticate!
+}
+
+type Authenticate {
+    token: String!
+}
