@@ -149,7 +149,8 @@
           "warn"
         ],
         "@typescript-eslint/no-explicit-any": 0,
-        "@typescript-eslint/no-empty-function": "warn"
+        "@typescript-eslint/no-empty-function": "warn",
+        "@typescript-eslint/ban-types": 0
       }
     }
   ]

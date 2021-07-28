@@ -1,11 +1,30 @@
 type Query {
-    login(email: String!, password: String!): Authenticate!
+    users: [User!]!
+    userById(id: ID!): User
 }
 
 type Mutation {
-    register(email: String!, password: String!): Authenticate!
+    createUser(user: InputCreateUser!): User
+    updateUser(user: InputUpdateUser!): User
+    destroyUser(id: ID!): Int
 }
 
-type Authenticate {
-    token: String!
+type User {
+    id: String!
+    username: String!
+    name: String
+    email: String
+}
+
+input InputCreateUser {
+    username: String!
+    name: String
+    email: String
+}
+
+input InputUpdateUser {
+    id: String!
+    username: String!
+    name: String
+    email: String
 }
