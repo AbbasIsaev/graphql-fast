@@ -1,43 +1,17 @@
-import {user, userAttributes} from '../models/user'
-import {newGuid} from '../graphql/utils/utils'
-import {ISimpleCRUDService} from './types/types'
+import {BaseCRUDService} from './base/BaseCRUDService'
+import {User, UserAttributes} from '../models/User'
 
-class UserService implements ISimpleCRUDService {
-    private model = user
+class UserService extends BaseCRUDService {
 
-    getAll() {
-        return this.model.findAll()
-    }
-
-    getById(id: string): Promise<user | null> {
-        return this.model.findOne({
-            where: {id}
-        })
-    }
-
-    create(body: userAttributes): Promise<user> {
+    create(body: UserAttributes): Promise<User> {
         const {username, name, email} = body
-        return this.model.create({
-            id: newGuid(),
-            username, name, email
-        })
+        return super.create({username, name, email})
     }
 
-    update(id: string, body: userAttributes): Promise<[number, user[]]> {
+    update(id: string, body: UserAttributes): Promise<[number, User[]]> {
         const {username, name, email} = body
-
-        return this.model.update({
-            username, name, email
-        }, {
-            where: {id}
-        })
-    }
-
-    destroy(id: string): Promise<number> {
-        return this.model.destroy({
-            where: {id}
-        })
+        return super.update(id, {username, name, email})
     }
 }
 
-export const userService = new UserService()
+export const userService = new UserService(User)

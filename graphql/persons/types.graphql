@@ -1,0 +1,24 @@
+extend type Query {
+    persons: [Person!]!
+    personById(id: ID!): Person
+}
+
+extend type Mutation {
+    createPerson(person: InputCreatePerson!): Person
+    updatePerson(person: InputUpdatePerson!): Person
+    destroyPerson(id: ID!): Int
+}
+
+type Person {
+    id: String!
+    name: String!
+}
+
+input InputCreatePerson {
+    name: String!
+}
+
+input InputUpdatePerson {
+    id: String!
+    name: String!
+}

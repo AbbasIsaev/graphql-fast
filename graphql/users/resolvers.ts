@@ -7,7 +7,7 @@ import {
     QueryUserByIdArgs,
     User
 } from '../generated/types'
-import {userAttributes} from '../../models/user'
+import {UserAttributes} from '../../models/User'
 import {userService as service} from '../../services/userService'
 
 const users = (): Promise<User[]> => {
@@ -19,12 +19,12 @@ const userById = (_: void, {id}: QueryUserByIdArgs): Promise<User | null> => {
 }
 
 const createUser = (_: void, {user}: MutationCreateUserArgs): Promise<User> => {
-    return <Promise<User>>service.create(<userAttributes>user)
+    return <Promise<User>>service.create(<UserAttributes>user)
 }
 
 const updateUser = async (_: void, {user}: MutationUpdateUserArgs): Promise<User | null> => {
     const {id} = user
-    await service.update(id, <userAttributes>user)
+    await service.update(id, <UserAttributes>user)
     return <User | null>await service.getById(id)
 }
 

@@ -1,21 +1,28 @@
 import type {Sequelize} from 'sequelize'
-import type {userAttributes, userCreationAttributes} from './user'
-import {user} from './user'
+import type {PersonAttributes, PersonCreationAttributes} from './Person'
+import {Person} from './Person'
+import type {UserAttributes, UserCreationAttributes} from './User'
+import {User} from './User'
 
 export {
-    user
+    Person,
+    User
 }
 
 export type {
-    userAttributes,
-    userCreationAttributes
+    PersonAttributes,
+    PersonCreationAttributes,
+    UserAttributes,
+    UserCreationAttributes
 }
 
 export function initModels(sequelize: Sequelize) {
-    user.initModel(sequelize)
+    Person.initModel(sequelize)
+    User.initModel(sequelize)
 
 
     return {
-        user: user
+        Person: Person,
+        User: User
     }
 }

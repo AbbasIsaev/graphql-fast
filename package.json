@@ -7,7 +7,7 @@
     "start:dev": "nodemon index.ts",
     "codegen": "npm run codegen-graphql && npm run codegen-models",
     "codegen-graphql": "graphql-codegen --config codegen.yml",
-    "codegen-models": "sequelize-auto -o './models' -e sqlite -l ts -c ./config/db.json"
+    "codegen-models": "sequelize-auto -o './models' -e sqlite -l ts -c ./config/db.json --caseModel p --caseFile p"
   },
   "nodemonConfig": {
     "ext": "ts, js, json"

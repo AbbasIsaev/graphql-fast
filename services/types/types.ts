@@ -1,11 +1,13 @@
-export interface ISimpleCRUDService {
-    getAll(): any
+export type valueOf<T> = T[keyof T]
 
-    getById(id: string): any
+export interface IBaseCRUDService {
+    getAll(): Promise<any[]>
 
-    create(body: any): any
+    getById(id: string): Promise<any | null>
 
-    update(id: string, body: any): any
+    create(body: any): Promise<any>
 
-    destroy(id: string): any
+    update(id: string, body: any): Promise<[number, any]>
+
+    destroy(id: string): Promise<number>
 }
